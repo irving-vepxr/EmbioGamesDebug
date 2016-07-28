@@ -11,24 +11,16 @@ public class EstadoJuego : MonoBehaviour {
 	public GUIText guiPuntuacion;
 	public int puntuacion = 0;
 
-	// Use this for initialization
-	void Start () {
+    void Start () {
 		vidasActuales = VidasIniciales;
 		guiVidas.texture = vidasImagenes[vidasActuales];
-	//	Debug.Log(vidasActuales);
 		puntuacion = 0;
 		ActualizarPuntuacion();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	public void PerderUnaVida(){
 		if(vidasActuales>0){
 			vidasActuales-=1;
-			// Debug.Log(vidasActuales);
 		}
 
 		if(vidasActuales< vidasImagenes.Length){
@@ -46,7 +38,6 @@ public class EstadoJuego : MonoBehaviour {
 	}
 
 	public void ActualizarPuntuacion(){
-		//Debug.Log(puntuacion);
 		guiPuntuacion.text=puntuacion.ToString("D5");
 	}
 }

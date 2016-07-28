@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Vuforia
 {
-    //
     /// <summary>
     /// A custom handler that implements the ITrackableEventHandler interface.
     /// </summary>
@@ -18,7 +17,6 @@ namespace Vuforia
         #region PRIVATE_MEMBER_VARIABLES
  
         private TrackableBehaviour mTrackableBehaviour;
-        private EventoMarcador eventoMarcador;
     
         #endregion // PRIVATE_MEMBER_VARIABLES
 
@@ -28,15 +26,6 @@ namespace Vuforia
     
         void Start()
         {
-            GameObject controler = GameObject.Find("ControladorJuego");
-            if (controler != null)
-            {
-                eventoMarcador = controler.gameObject.GetComponent<EventoMarcador>();
-            }
-            else
-            {
-                Debug.Log("Gameobject ControladorJuego not find");
-            }
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
             if (mTrackableBehaviour)
             {
@@ -63,12 +52,10 @@ namespace Vuforia
                 newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
             {
                 OnTrackingFound();
-                eventoMarcador.MarcadorEncontrado();
             }
             else
             {
                 OnTrackingLost();
-                eventoMarcador.MarcadorPerdido();
             }
         }
 
