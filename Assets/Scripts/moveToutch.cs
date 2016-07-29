@@ -3,15 +3,6 @@ using System.Collections;
 
 public class moveToutch : MonoBehaviour {
     public float speed;
-    
-	void Start () {
-        //speed = 0.2f;
-	}
-	
-
-	void Update () {
-	   
-	}
 
     void OnCollisionEnter(Collision c)
     {

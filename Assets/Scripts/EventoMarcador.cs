@@ -15,12 +15,14 @@ public class EventoMarcador : MonoBehaviour {
 		if(detener==true && Time.frameCount >= 2){
 			Time.timeScale = 0f;
 		}
+        /*
 		if(Input.GetKeyDown(KeyCode.Q)){
 			MarcadorPerdido();
 		}
 		else if (Input.GetKeyDown(KeyCode.W)){
 				MarcadorEncontrado();
 			}
+            */
 	}
 
 	public void MarcadorEncontrado(){
@@ -28,9 +30,6 @@ public class EventoMarcador : MonoBehaviour {
         if (notificacion!=null){
 			notificacion.enabled = false;
 		}
-				//	Debug.Log("Marcador Encontrado");
-		//resume game
-		//resume game
 		Time.timeScale = 1f;
 		
 	}
@@ -41,8 +40,5 @@ public class EventoMarcador : MonoBehaviour {
 			notificacion.enabled = true;
 		}
 		Time.timeScale = 0f;
-		
-		//pause game
-		//			Debug.Log("Marcador Perdido");
 	}
 }

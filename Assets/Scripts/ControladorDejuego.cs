@@ -3,16 +3,6 @@ using System.Collections;
 
 public class ControladorDejuego : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public static T ObtenerComponente<T> (string nombreDelGameObject) where T : UnityEngine.Component{
 		GameObject controlador = GameObject.Find(nombreDelGameObject);
 		if(controlador!=null){
