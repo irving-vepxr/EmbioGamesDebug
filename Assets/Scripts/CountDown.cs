@@ -1,16 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour {
 
     public float timeLeft = 300.0f;
     private static int timeLeftPivot = 0;
-    public bool stop = false;
-    public GUIText guiTimer;
+    public bool stop = true;
+    public Text guiTimer;
 
+    public bool detener = true;
+
+    
+    void Start()
+    {
+        EventoMarcador detener = GetComponent<EventoMarcador>();
+        stop = true;
+    }
+    
     public void startTimer(float from)
     {
-        stop = false;
+        stop = true;
         timeLeft = from;
         Update();
         StartCoroutine(updateCoroutine());
@@ -18,7 +28,10 @@ public class CountDown : MonoBehaviour {
 
     void Update()
     {
+        EventoMarcador detenerEvento = GetComponent<EventoMarcador>();
+        stop = detenerEvento.detener;
         if (stop) return;
+
         timeLeft -= Time.deltaTime;
         if (timeLeft > 0)
         {

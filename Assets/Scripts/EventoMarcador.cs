@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
 public class EventoMarcador : MonoBehaviour {
 	public Text notificacion;
-	private bool detener=false;
-    
+	public bool detener=true;
+
+	void Start () {
+        detener = true;
+	}
+	
 	void Update () {
 		//Hack para corregir el timeScale en Android
 		if(detener==true && Time.frameCount >= 2){
@@ -19,23 +24,25 @@ public class EventoMarcador : MonoBehaviour {
 	}
 
 	public void MarcadorEncontrado(){
-		if(notificacion!=null){
+        detener = false;
+        if (notificacion!=null){
 			notificacion.enabled = false;
 		}
-				Debug.Log("Marcador Encontrado");
+				//	Debug.Log("Marcador Encontrado");
 		//resume game
 		//resume game
 		Time.timeScale = 1f;
-		detener = false;
+		
 	}
 
 	public void MarcadorPerdido(){
-		if(notificacion!=null){
+        detener = true;
+        if (notificacion!=null){
 			notificacion.enabled = true;
 		}
 		Time.timeScale = 0f;
-		detener = true;
+		
 		//pause game
-		Debug.Log("Marcador Perdido");
+		//			Debug.Log("Marcador Perdido");
 	}
 }

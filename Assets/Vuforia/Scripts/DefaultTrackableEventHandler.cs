@@ -5,7 +5,7 @@ Confidential and Proprietary - Protected under copyright and other laws.
 ==============================================================================*/
 
 using UnityEngine;
-
+//
 namespace Vuforia
 {
     /// <summary>
@@ -17,7 +17,7 @@ namespace Vuforia
         #region PRIVATE_MEMBER_VARIABLES
  
         private TrackableBehaviour mTrackableBehaviour;
-    
+        private EventoMarcador eventoMArcador;
         #endregion // PRIVATE_MEMBER_VARIABLES
 
 
@@ -26,6 +26,15 @@ namespace Vuforia
     
         void Start()
         {
+            GameObject controlador = GameObject.Find("ControladorJuego");
+            if (controlador != null)
+            {
+                eventoMArcador = controlador.GetComponent<EventoMarcador>();
+            }
+            else
+            {
+                Debug.LogError("No existe ControladorJuego");
+            }
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
             if (mTrackableBehaviour)
             {
@@ -52,10 +61,12 @@ namespace Vuforia
                 newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
             {
                 OnTrackingFound();
+                eventoMArcador.MarcadorEncontrado();
             }
             else
             {
                 OnTrackingLost();
+                eventoMArcador.MarcadorPerdido();
             }
         }
 

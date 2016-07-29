@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EstadoJuego : MonoBehaviour {
 	public int vidasActuales = 0;
 	public int VidasIniciales = 3;
 
-	public GUITexture guiVidas;
+	public RawImage guiVidas;
 	public Texture[] vidasImagenes;
 
-	public GUIText guiPuntuacion;
+	public Text guiPuntuacion;
 	public int puntuacion = 0;
 
     void Start () {
@@ -18,13 +19,21 @@ public class EstadoJuego : MonoBehaviour {
 		ActualizarPuntuacion();
 	}
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            PerderUnaVida();
+        }
+    }
 	public void PerderUnaVida(){
+        Debug.Log(vidasActuales);
 		if(vidasActuales>0){
 			vidasActuales-=1;
 		}
 
 		if(vidasActuales< vidasImagenes.Length){
-			guiVidas.texture = vidasImagenes[vidasActuales];
+			guiVidas.texture= vidasImagenes[vidasActuales];
 		}
 
 		if(vidasActuales<=0){
