@@ -10,7 +10,7 @@ public class CountDown : MonoBehaviour {
     public Text guiTimer;
 
     public bool detener = true;
-
+    public GameObject camara;
     
     void Start()
     {
@@ -39,7 +39,12 @@ public class CountDown : MonoBehaviour {
             {
                 timeLeftPivot = (int)timeLeft;
                 guiTimer.text = timeLeftPivot.ToString("D3");
+                if(timeLeftPivot == 15)
+                {
+                    camara.GetComponent<WarningVisionImageEffect>().enabled = true;
+                }
             }
+
         }
         else
         {

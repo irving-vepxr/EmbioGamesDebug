@@ -3,16 +3,19 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EstadoJuego : MonoBehaviour {
-	public int vidasActuales = 0;
-	public int VidasIniciales = 3;
+    public int vidasActuales = 0;
+    public int VidasIniciales = 3;
 
-	public RawImage guiVidas;
-	public Texture[] vidasImagenes;
+    public RawImage guiVidas;
+    public Texture[] vidasImagenes;
 
-	public Text guiPuntuacion;
-	public int puntuacion = 0;
+    public int puntuacion;
+    public Text guiPuntuacion;
+
+    public GameObject camara;
 
     void Start () {
+        camara.GetComponent<WarningVisionImageEffect>().enabled = false;
 		vidasActuales = VidasIniciales;
 		guiVidas.texture = vidasImagenes[vidasActuales];
 		puntuacion = 0;
@@ -38,6 +41,7 @@ public class EstadoJuego : MonoBehaviour {
 
 		if(vidasActuales<=0){
 			SendMessage("PartidaTermina",SendMessageOptions.DontRequireReceiver);
+            camara.GetComponent<WarningVisionImageEffect>().enabled = true;
 		}
 	}
 
