@@ -25,7 +25,7 @@
 			UNITY_INITIALIZE_OUTPUT(Input, o);
 			float time = _Time * _Speed;
 			float wave = sin(time + v.vertex.x * _Frequency) * _Amplitude;
-			v.vertex.xyz = float3(v.vertex.x + wave, v.vertex.y + wave, v.vertex.z + wave);
+			v.vertex.xyz = float3(v.vertex.x + wave, v.vertex.y , v.vertex.z + wave);
 			v.texcoord.xy = float2(v.texcoord.x + wave, v.texcoord.y + wave);
 			v.normal = normalize(float3(v.normal.x + wave, v.normal.y, v.normal.z + wave));
 			o.vertColor = float3(1, 1, 1);
