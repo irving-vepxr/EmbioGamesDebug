@@ -2,8 +2,17 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class EstadoJuego : MonoBehaviour {
+
+	public static EstadoJuego instance;
+    void Awake()
+    {
+        instance = this;
+
+    }
+
     public int vidasActuales = 0;
     public int VidasIniciales = 3;
 
@@ -16,36 +25,47 @@ public class EstadoJuego : MonoBehaviour {
     public GameObject camara;
 
     private List<GameObject> organList = new List<GameObject>();
+    public Text guiOrganName;
+    private int selectOrgan;
+    public int puntuationCorrect;
 
-    void Awake() {
+    public GameObject answerCorrectPrefab;
+    private bool finishGame = false;
+
+    void Start () {
         foreach (GameObject gameObj in GameObject.FindGameObjectsWithTag("Organ"))
         {
             organList.Add(gameObj);
-            //Debug.Log("Lista de organos: "+gameObj.transform.name);
         }
-        //Debug.Log("Primer organo es"+ organList[0].transform.name);
-    }
-
-
-    void Start () {
-
         camara.GetComponent<WarningVisionImageEffect>().enabled = false;
 		vidasActuales = VidasIniciales;
 		guiVidas.texture = vidasImagenes[vidasActuales];
-		puntuacion = 0;
+		puntuacion = 0;//Leer de archivo
 		ActualizarPuntuacion();
+        randomOrganSelect();
+        finishGame = false;
 	}
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (finishGame == true)
         {
-            PerderUnaVida();
+            StartCoroutine(finish());
         }
+       /* else { 
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                PerderUnaVida();
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                IncrementarPuntuacion(10);
+            }
+        }*/
+           
     }
 
 	public void PerderUnaVida(){
-        Debug.Log(vidasActuales);
 		if(vidasActuales>0){
 			vidasActuales-=1;
 		}
@@ -59,24 +79,60 @@ public class EstadoJuego : MonoBehaviour {
             camara.GetComponent<WarningVisionImageEffect>().enabled = true;
         }
 
-		if(vidasActuales<=0){
+		if(vidasActuales==0){
 			SendMessage("PartidaTermina",SendMessageOptions.DontRequireReceiver);
-            camara.GetComponent<WarningVisionImageEffect>().enabled = true;
-		}
+            finishGame = true;
+        }
 	}
 
 	public void IncrementarPuntuacion(int valorIncrementar){
 		puntuacion += valorIncrementar;
+        organList.Remove(organList[selectOrgan]);
+        randomOrganSelect();
 		ActualizarPuntuacion();
+
 	}
+
+    public void randomOrganSelect()
+    {
+        if (organList.Count > 0)
+        {
+            selectOrgan = Random.Range(0, organList.Count);
+            //  Debug.Log("list " + organList.Count + organList[selectOrgan].name);
+            guiOrganName.text = organList[selectOrgan].name;
+        }
+        else
+        {
+            CountDown restTime = GetComponent<CountDown>();
+            puntuacion += (int)restTime.timeLeft * 2 + vidasActuales*50;
+            finishGame = true;
+        }
+    }
+
+    public void compareOrgan(GameObject rayOrganCast)
+    {
+      
+        if (rayOrganCast.transform.name == organList[selectOrgan].name)
+        {
+            Destroy(Instantiate(answerCorrectPrefab, rayOrganCast.transform.localPosition, Quaternion.identity), 2f);
+            Destroy(rayOrganCast, 0.5f);
+            organList.Remove(organList[selectOrgan]);
+            IncrementarPuntuacion(puntuationCorrect);
+        }
+        else
+        {
+            PerderUnaVida();
+        }
+    }
 
 	public void ActualizarPuntuacion(){
 		guiPuntuacion.text=puntuacion.ToString("D5");
 	}
 
 
-    void OnGUI()
+    IEnumerator finish()
     {
-        GUI.Label(new Rect(Screen.width * 0.7f, Screen.height * 0.3f, Screen.width*0.3f, Screen.height*0.3f), organList[0].transform.name);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }
