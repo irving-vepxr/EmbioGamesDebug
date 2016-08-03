@@ -30,6 +30,7 @@ public class EstadoJuego : MonoBehaviour {
     public int puntuationCorrect;
 
     public GameObject answerCorrectPrefab;
+    public GameObject answerInCorrectPrefab;
     private bool finishGame = false;
 
     void Start () {
@@ -117,10 +118,13 @@ public class EstadoJuego : MonoBehaviour {
             Destroy(Instantiate(answerCorrectPrefab, rayOrganCast.transform.localPosition, Quaternion.identity), 2f);
             Destroy(rayOrganCast, 0.5f);
             organList.Remove(organList[selectOrgan]);
+            randomOrganSelect();
             IncrementarPuntuacion(puntuationCorrect);
         }
         else
         {
+            Destroy(Instantiate(answerInCorrectPrefab, rayOrganCast.transform.localPosition, Quaternion.identity), 2f);
+            Debug.Log("Perdiendo vidas" + vidasActuales);
             PerderUnaVida();
         }
     }

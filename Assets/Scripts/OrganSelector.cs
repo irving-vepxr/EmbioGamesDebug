@@ -13,7 +13,7 @@ public class OrganSelector : MonoBehaviour
     private Ray toutchRay;
     private RaycastHit rayCastHit;
 
-    //private string nameOrgan="No organos";
+    private string nameOrgan="No organos";
 
 
 
@@ -36,9 +36,16 @@ public class OrganSelector : MonoBehaviour
                 if (rayCastHit.transform.tag == "Organ")
                 {
                     tmpOrgan = rayCastHit.transform.gameObject;
+                    if(nameOrgan!=(tmpOrgan.transform.name))
+                    {
+                        nameOrgan = tmpOrgan.transform.name;
+                        EstadoJuego.instance.compareOrgan(tmpOrgan);
+
+                    }
                    // nameOrgan = rayCastHit.transform.name;
                    // Debug.Log(nameOrgan);
-                    EstadoJuego.instance.compareOrgan(tmpOrgan);
+                    //EstadoJuego.instance.compareOrgan(tmpOrgan);
+                    //rayCastHit = 0;
                 }
             }
             switch (currentState)

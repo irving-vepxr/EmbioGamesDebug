@@ -7,9 +7,17 @@ public class EventoMarcador : MonoBehaviour {
     public Text nameOrgan;
 	public bool detener=true;
 
+
+    public GameObject sliderMusic;
+    public GameObject sliderEffects;
+    public GameObject lifeImage;
+
 	void Start () {
         detener = true;
         nameOrgan.enabled = false;
+        sliderMusic.SetActive(false);
+        sliderEffects.SetActive(false);
+        lifeImage.SetActive(true);
 	}
 	
 	void Update () {
@@ -32,7 +40,10 @@ public class EventoMarcador : MonoBehaviour {
         if (notificacion!=null){
 			notificacion.enabled = false;
             nameOrgan.enabled = true;
-		}
+            sliderMusic.SetActive(false);
+            sliderEffects.SetActive(false);
+            lifeImage.SetActive(true);
+        }
 		Time.timeScale = 1f;
 		
 	}
@@ -42,7 +53,10 @@ public class EventoMarcador : MonoBehaviour {
         if (notificacion!=null){
 			notificacion.enabled = true;
             nameOrgan.enabled = false;
-		}
+            sliderMusic.SetActive(true);
+            sliderEffects.SetActive(true);
+            lifeImage.SetActive(false);
+        }
 		Time.timeScale = 0f;
 	}
 }

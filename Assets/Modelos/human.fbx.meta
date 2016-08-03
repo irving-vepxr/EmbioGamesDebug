@@ -208,6 +208,38 @@ ModelImporter:
     4300064: Tronco_celiatico
     4300066: VenaUmbilical
     4300068: Pulmon_Left
+    6400000: AortaInferior
+    6400002: AortaSuperior
+    6400004: Arteria_aorta_inf
+    6400006: Arteria_de_mesentrica_sup_1
+    6400008: Arteria_de_mesentrica_sup_2
+    6400010: Arteria_mesentrica_superior
+    6400012: Arteria_Ri_on1
+    6400014: Arteria_Right
+    6400016: Arteria_Right1
+    6400018: ArteriaCabeza_left
+    6400020: ArteriaCabeza_Right
+    6400022: ArteriaCabezaSmall
+    6400024: ArteriaPulmonar_Right
+    6400026: ArteriasUmbilical_1
+    6400028: ArteriaUmbilical__
+    6400030: ConductoArterioso
+    6400032: Instestino
+    6400034: Pulmon_Left
+    6400036: Ri_on
+    6400038: Tronco_celiatico
+    6400040: TroncoPulmonar
+    6400042: Vena_Cabeza_right
+    6400044: Vena_cava_inferior_right
+    6400046: Vena_pulmonar_right
+    6400048: Vena_Ri_on
+    6400050: VenaCava_Left
+    6400052: VenaCavaCabeza
+    6400054: VenaCavaInferior
+    6400056: VenaCavaSuperior
+    6400058: VenaPortaHepatica
+    6400060: VenaPulmonar_Left
+    6400062: VenaUmbilical
     7400000: Take 001
     9500000: //RootNode
     13700000: Corazon
@@ -221,27 +253,176 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Curve
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 0
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AortaSuperior
+        weight: 0
+      - path: AortaSuperior/Arteria_Right1
+        weight: 0
+      - path: ArteriaCabeza_left
+        weight: 0
+      - path: ArteriaCabeza_left/ArteriaCabezaSmall
+        weight: 0
+      - path: Arteria_Right
+        weight: 0
+      - path: ArteriaCabeza_Right
+        weight: 0
+      - path: VenaCavaSuperior
+        weight: 0
+      - path: VenaCavaSuperior/Vena_Cabeza_right
+        weight: 0
+      - path: VenaCavaSuperior/VenaCava_Left
+        weight: 0
+      - path: VenaCavaSuperior/VenaCavaCabeza
+        weight: 0
+      - path: TroncoPulmonar
+        weight: 0
+      - path: TroncoPulmonar/ArteriaPulmonar_Right
+        weight: 0
+      - path: ConductoArterioso
+        weight: 0
+      - path: VenaPulmonar_Left
+        weight: 0
+      - path: AortaInferior
+        weight: 0
+      - path: AortaInferior/Arteria_aorta_inf
+        weight: 0
+      - path: AortaInferior/ArteriasUmbilical_1
+        weight: 0
+      - path: AortaInferior/ArteriaUmbilical__
+        weight: 0
+      - path: AortaInferior/Arteria_Ri_on1
+        weight: 0
+      - path: Ri_on
+        weight: 0
+      - path: VenaCavaInferior
+        weight: 0
+      - path: VenaCavaInferior/Vena_cava_inferior_right
+        weight: 0
+      - path: VenaCavaInferior/Vena_Ri_on
+        weight: 0
+      - path: Instestino
+        weight: 0
+      - path: Arteria_mesentrica_superior
+        weight: 0
+      - path: Arteria_mesentrica_superior/Arteria_de_mesentrica_sup_1
+        weight: 0
+      - path: Arteria_mesentrica_superior/Arteria_de_mesentrica_sup_2
+        weight: 0
+      - path: Vena_pulmonar_right
+        weight: 0
+      - path: Pulmon_Right
+        weight: 1
+      - path: Pulmon_Right/Texture_Support1
+        weight: 1
+      - path: Pulmon_Right/Pulmon_Right1
+        weight: 1
+      - path: Pulmon_Right/Pulmon_Right1/bone3
+        weight: 1
+      - path: Pulmon_Right/Pulmon_Right1/bone3/bone3_eff
+        weight: 1
+      - path: Corazon
+        weight: 1
+      - path: Corazon/Texture_Support
+        weight: 1
+      - path: Corazon/bone_corazon
+        weight: 1
+      - path: Corazon/bone_corazon/bone1
+        weight: 1
+      - path: Corazon/bone_corazon/bone1/bone1_eff
+        weight: 1
+      - path: Corazon/bone_corazon/bone2
+        weight: 1
+      - path: Corazon/bone_corazon/bone2/bone2_eff
+        weight: 1
+      - path: Higado
+        weight: 1
+      - path: Higado/VenaPortaHepatica
+        weight: 1
+      - path: Higado/Texture_Support3
+        weight: 1
+      - path: Higado/bone_higado
+        weight: 1
+      - path: Higado/bone_higado/bone4
+        weight: 1
+      - path: Higado/bone_higado/bone4/bone4_eff
+        weight: 1
+      - path: Higado/bone_higado/bone5
+        weight: 1
+      - path: Higado/bone_higado/bone5/bone5_eff
+        weight: 1
+      - path: Tronco_celiatico
+        weight: 0
+      - path: VenaUmbilical
+        weight: 0
+      - path: Pulmon_Left
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 7
+    globalScale: 15
     meshCompression: 2
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
@@ -268,7 +449,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: bone_corazon
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
