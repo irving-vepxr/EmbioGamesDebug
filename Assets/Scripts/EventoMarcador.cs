@@ -11,6 +11,7 @@ public class EventoMarcador : MonoBehaviour {
     public GameObject sliderMusic;
     public GameObject sliderEffects;
     public GameObject lifeImage;
+    public GameObject exitButton;
 
 	void Start () {
         detener = true;
@@ -18,6 +19,7 @@ public class EventoMarcador : MonoBehaviour {
         sliderMusic.SetActive(false);
         sliderEffects.SetActive(false);
         lifeImage.SetActive(true);
+        exitButton.SetActive(false);
 	}
 	
 	void Update () {
@@ -42,6 +44,7 @@ public class EventoMarcador : MonoBehaviour {
             nameOrgan.enabled = true;
             sliderMusic.SetActive(false);
             sliderEffects.SetActive(false);
+            exitButton.SetActive(false);
             lifeImage.SetActive(true);
         }
 		Time.timeScale = 1f;
@@ -55,6 +58,7 @@ public class EventoMarcador : MonoBehaviour {
             nameOrgan.enabled = false;
             sliderMusic.SetActive(true);
             sliderEffects.SetActive(true);
+            exitButton.SetActive(true);
             lifeImage.SetActive(false);
         }
 		Time.timeScale = 0f;

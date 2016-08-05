@@ -18,4 +18,9 @@ public class loadLevels : MonoBehaviour {
     {
         SceneManager.LoadScene(3, LoadSceneMode.Single);
     }
+
+    public void exit()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 }

@@ -15,7 +15,8 @@ public class OrganSelector : MonoBehaviour
 
     private string nameOrgan="No organos";
 
-
+    private GameObject tmpItem;
+    
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class OrganSelector : MonoBehaviour
             //toutchRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(toutchRay, out rayCastHit))
             {
-                Debug.Log(rayCastHit.transform.tag);
+               // Debug.Log(rayCastHit.transform.tag);
       
 
                 if (rayCastHit.transform.tag == "Organ")
@@ -46,6 +47,12 @@ public class OrganSelector : MonoBehaviour
                    // Debug.Log(nameOrgan);
                     //EstadoJuego.instance.compareOrgan(tmpOrgan);
                     //rayCastHit = 0;
+                }
+
+                if(rayCastHit.transform.tag == "Item")
+                {
+                    tmpItem = rayCastHit.transform.gameObject;
+                    EstadoJuego.instance.updateItems(tmpItem);
                 }
             }
             switch (currentState)

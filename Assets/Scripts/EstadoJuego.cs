@@ -31,7 +31,11 @@ public class EstadoJuego : MonoBehaviour {
 
     public GameObject answerCorrectPrefab;
     public GameObject answerInCorrectPrefab;
+    public GameObject estetoscopio;
     private bool finishGame = false;
+
+    public Text itemsText;
+    public GameObject itemsExplosion;
 
     void Start () {
         foreach (GameObject gameObj in GameObject.FindGameObjectsWithTag("Organ"))
@@ -41,11 +45,22 @@ public class EstadoJuego : MonoBehaviour {
         camara.GetComponent<WarningVisionImageEffect>().enabled = false;
 		vidasActuales = VidasIniciales;
 		guiVidas.texture = vidasImagenes[vidasActuales];
+        if(DataManager.instance.currency== "Estetoscopio")
+        {
+            puntuationCorrect += 5;
+            estetoscopio.SetActive(true);
+        }
+        else
+        {
+            estetoscopio.SetActive(false);
+        }
+
 		puntuacion = 0;//Leer de archivo
 		ActualizarPuntuacion();
         randomOrganSelect();
         finishGame = false;
-	}
+        itemsText.text =DataManager.instance.items.ToString("D3");
+    }
 
     void Update()
     {
@@ -133,6 +148,15 @@ public class EstadoJuego : MonoBehaviour {
 		guiPuntuacion.text=puntuacion.ToString("D5");
 	}
 
+    public void updateItems(GameObject tmpItem)
+    {
+        
+        Destroy(Instantiate(itemsExplosion, tmpItem.transform.localPosition, Quaternion.identity), 2f);
+        DataManager.instance.items += 1;
+        DataManager.instance.SaveData();
+        Destroy(tmpItem, 0.5f);
+        itemsText.text = DataManager.instance.items.ToString("D3");
+    }
 
     IEnumerator finish()
     {
